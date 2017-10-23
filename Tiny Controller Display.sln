@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiny Controller Display", "Tiny Controller Display\Tiny Controller Display.csproj", "{0B3F4A45-6563-4786-BF77-56DF889EEBDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B3F4A45-6563-4786-BF77-56DF889EEBDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B3F4A45-6563-4786-BF77-56DF889EEBDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B3F4A45-6563-4786-BF77-56DF889EEBDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B3F4A45-6563-4786-BF77-56DF889EEBDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6A8B03B-8CC7-4903-B54D-17EB9064EAC5}
+	EndGlobalSection
+EndGlobal
