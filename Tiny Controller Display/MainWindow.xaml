@@ -8,25 +8,25 @@
         Title="Tiny Controller Display"
         Height="37px" Width="57px"
         ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Topmost="True">
-    <Grid>
-        <Image Source="faceplate.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="bottom_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="dpad.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="left_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="left_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="left_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="left_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="left_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="left_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="right_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="right_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="right_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="right_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="right_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="right_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="select_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="start_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
-        <Image Source="top_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+	<Grid>
+		<Image x:Name="faceplate" Source="faceplate.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="bottomButton" Source="bottom_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="dPad" Source="dpad.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftBumper" Source="left_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftButton" Source="left_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftStickwellPressed" Source="left_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftSticktop" Source="left_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftSticktopPressed" Source="left_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftTrigger" Source="left_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="rightBumper" Source="right_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="rightButton" Source="right_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="rightStickwellPressed" Source="right_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="rightSticktop" Source="right_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="rightSticktopPressed" Source="right_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="rightTrigger" Source="right_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="selectButton" Source="select_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="startButton" Source="start_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="topButton" Source="top_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 
-    </Grid>
+	</Grid>
 </Window>
