@@ -93,5 +93,59 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bottom_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dpad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="faceplate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="left_bumper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="left_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="left_sticktop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="left_sticktop_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="left_stickwell_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="left_trigger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="right_bumper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="right_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="right_sticktop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="right_sticktop_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="right_stickwell_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="right_trigger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="select_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="start_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="top_button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,16 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tiny_Controller_Display
-{
+namespace Tiny_Controller_Display {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
-	{
-		public MainWindow()
-		{
+	public partial class MainWindow : Window {
+		public MainWindow() {
 			InitializeComponent();
+		}
+
+		private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+			if(e.ChangedButton == MouseButton.Left)
+				DragMove();
 		}
 	}
 }

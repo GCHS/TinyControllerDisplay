@@ -1,12 +1,32 @@
-﻿<Window x:Class="Tiny_Controller_Display.MainWindow"
+﻿<Window x:Name="ControllerDisplay" x:Class="Tiny_Controller_Display.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tiny_Controller_Display"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Tiny Controller Display"
+        Height="37px" Width="57px"
+        ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Topmost="True">
     <Grid>
-        
+        <Image Source="faceplate.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="bottom_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="dpad.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="left_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="left_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="left_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="left_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="left_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="left_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="right_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="right_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="right_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="right_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="right_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="right_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="select_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="start_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+        <Image Source="top_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
+
     </Grid>
 </Window>
