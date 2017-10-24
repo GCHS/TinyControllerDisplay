@@ -9,16 +9,16 @@
         Height="37px" Width="57px"
         ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Topmost="True">
 	<Grid>
+		<Image x:Name="leftBumper" Source="left_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="rightBumper" Source="right_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="faceplate" Source="faceplate.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="bottomButton" Source="bottom_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="dPad" Source="dpad.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="leftBumper" Source="left_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="leftButton" Source="left_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="leftStickwellPressed" Source="left_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftStickwellPressed" Source="left_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px" />
 		<Image x:Name="leftSticktop" Source="left_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="leftSticktopPressed" Source="left_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="leftTrigger" Source="left_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="rightBumper" Source="right_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightButton" Source="right_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightStickwellPressed" Source="right_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightSticktop" Source="right_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>

@@ -21,7 +21,7 @@ namespace Tiny_Controller_Display {
 		private Controller controller1=new Controller(UserIndex.One);
 		private State player1;
 		private Task updateTask;
-		private Thickness noMargin = new Thickness(0), leftBumperPressed = new Thickness(1, 1, 0, 0), rightBumperPressed = new Thickness(0, 1, 0, 1);
+		private Thickness noMargin = new Thickness(0), leftBumperPressed = new Thickness(1, 1, 0, 0), rightBumperPressed = new Thickness(-2, 1, 0, 0);//for some reason, negative margins need to be doubled to display properly. 
 
 		public Dictionary<GamepadButtonFlags, Image[]> buttonsToImages;
 		public Image dPad, leftBumper, rightBumper;
@@ -38,10 +38,16 @@ namespace Tiny_Controller_Display {
 		}
 
 		Thickness StickValueToMargin(short x, short y) {
-			return new Thickness((x < 0 ? x / 32768.0 : x / 32767.0) * 2.0, (y < 0 ? y / 32768.0 : y / 32767.0) * 2.0, 0, 0);
+			return new Thickness((x < 0 ? x * 2.0 / 32768.0 : x / 32767.0) * 2.0, (y < 0 ? y / 32768.0 : y * 2.0 / 32767.0) * -2.0, 0, 0);//for some reason, negative margins need to be doubled to display properly. 
 		}
 
-		void Update() {
+		Thickness GetDPadMargin() {
+			double topMargin = Convert.ToDouble((player1.Gamepad.Buttons & GamepadButtonFlags.DPadDown) != 0) - Convert.ToDouble((player1.Gamepad.Buttons & GamepadButtonFlags.DPadUp) != 0) * 2.0;
+			double leftMargin = Convert.ToDouble((player1.Gamepad.Buttons & GamepadButtonFlags.DPadRight) != 0) - Convert.ToDouble((player1.Gamepad.Buttons & GamepadButtonFlags.DPadLeft) != 0) * 2.0;
+			return new Thickness(leftMargin, topMargin, 0, 0);
+		}
+
+		public void Update() {
 			player1 = controller1.GetState();
 			foreach(KeyValuePair<GamepadButtonFlags,Image[]> buttonToImages in buttonsToImages) {
 				foreach(Image i in buttonToImages.Value) {
@@ -56,7 +62,7 @@ namespace Tiny_Controller_Display {
 			rightStick.unpressedSticktop.Margin = rightStick.pressedSticktop.Margin = StickValueToMargin(player1.Gamepad.RightThumbX, player1.Gamepad.RightThumbY);
 			leftBumper.Margin = ((player1.Gamepad.Buttons & GamepadButtonFlags.LeftShoulder) != 0) ? leftBumperPressed : noMargin;
 			rightBumper.Margin = ((player1.Gamepad.Buttons & GamepadButtonFlags.RightShoulder) != 0) ? rightBumperPressed : noMargin;
-
+			dPad.Margin = GetDPadMargin();
 		}
 	}
 }
