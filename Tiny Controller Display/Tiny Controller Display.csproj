@@ -161,5 +161,15 @@
   <ItemGroup>
     <Resource Include="tcd.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon base files\256.ico" />
+    <Resource Include="icon base files\32.ico" />
+    <Resource Include="icon base files\48.ico" />
+    <Resource Include="icon base files\64.ico" />
+    <Resource Include="icon base files\controller_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon base files\16.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
