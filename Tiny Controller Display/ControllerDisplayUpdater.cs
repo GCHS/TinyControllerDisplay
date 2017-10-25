@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
+using System.Threading;
 
 namespace Tiny_Controller_Display {
 	struct Stick {
@@ -42,6 +43,7 @@ namespace Tiny_Controller_Display {
 			this.rightStick = rightStick;
 			this.leftArcClip = leftArcClip;
 			this.rightArcClip = rightArcClip;
+			updateTask = BackgroundUpdate();
 		}
 
 		Thickness StickValueToMargin(short x, short y) {
@@ -58,7 +60,7 @@ namespace Tiny_Controller_Display {
 			return t / 255.0 * 15.0;
 		}
 
-		public void Update() {
+		private void Update() {
 			controller1.GetState(out player1);
 			foreach(KeyValuePair<GamepadButtonFlags,Image[]> buttonToImages in buttonsToImages) {
 				foreach(Image i in buttonToImages.Value) {
@@ -76,6 +78,13 @@ namespace Tiny_Controller_Display {
 			leftArcClip.Rect = new Rect(0, TriggerToArcClipY(player1.Gamepad.LeftTrigger), 57, 37);
 			rightArcClip.Rect = new Rect(0, TriggerToArcClipY(player1.Gamepad.RightTrigger), 57, 37);
 			dPad.Margin = GetDPadMargin();
+		}
+
+		private async Task BackgroundUpdate() {
+			while(true) {
+				Update();
+				await Task.Delay(1);
+			}
 		}
 	}
 }

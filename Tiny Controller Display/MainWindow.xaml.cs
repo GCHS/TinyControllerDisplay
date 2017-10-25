@@ -37,7 +37,6 @@ namespace Tiny_Controller_Display {
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
 			if(e.ChangedButton == MouseButton.Left)
 				DragMove();
-			displayUpdater.Update();
 		}
 
 	}
