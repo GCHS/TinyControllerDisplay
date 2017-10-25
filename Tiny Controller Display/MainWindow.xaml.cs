@@ -19,7 +19,7 @@ namespace Tiny_Controller_Display {
 		public MainWindow() {
 			InitializeComponent();
 			displayUpdater = new ControllerDisplayUpdater(
-			new Dictionary<GamepadButtonFlags, Image[]>(){
+				new Dictionary<GamepadButtonFlags, Image[]>(){
 					{GamepadButtonFlags.A, new Image[1]{bottomButton}},
 					{GamepadButtonFlags.B, new Image[1]{rightButton}},
 					{GamepadButtonFlags.X, new Image[1]{leftButton}},
@@ -29,7 +29,9 @@ namespace Tiny_Controller_Display {
 					{GamepadButtonFlags.Start, new Image[1]{startButton}},
 					{GamepadButtonFlags.Back, new Image[1]{selectButton}}
 				},
-			dPad, leftBumper, rightBumper, new Stick(leftSticktop,leftSticktopPressed), new Stick(rightSticktop,rightSticktopPressed)
+				dPad, leftBumper, rightBumper,
+				new Stick(leftSticktop, leftSticktopPressed), new Stick(rightSticktop, rightSticktopPressed),
+				(leftTrigger.Clip as RectangleGeometry), (rightTrigger.Clip as RectangleGeometry)
 			);
 		}
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e) {

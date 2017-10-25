@@ -18,15 +18,22 @@
 		<Image x:Name="leftStickwellPressed" Source="left_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px" />
 		<Image x:Name="leftSticktop" Source="left_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="leftSticktopPressed" Source="left_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="leftTrigger" Source="left_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightButton" Source="right_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightStickwellPressed" Source="right_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightSticktop" Source="right_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightSticktopPressed" Source="right_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="rightTrigger" Source="right_trigger.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="selectButton" Source="select_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="startButton" Source="start_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="topButton" Source="top_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
-
+		<Image x:Name="leftTrigger" Source="left_trigger.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.Clip>
+				<RectangleGeometry Rect="0,0,57,37"/>
+			</Image.Clip>
+		</Image>
+		<Image x:Name="rightTrigger" Source="right_trigger.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.Clip>
+				<RectangleGeometry Rect="0,0,57,37"/>
+			</Image.Clip>
+		</Image>
 	</Grid>
 </Window>

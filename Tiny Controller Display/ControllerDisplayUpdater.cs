@@ -7,6 +7,7 @@ using SharpDX.XInput;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Tiny_Controller_Display {
 	struct Stick {
@@ -23,17 +24,24 @@ namespace Tiny_Controller_Display {
 		private Task updateTask;
 		private Thickness noMargin = new Thickness(0), leftBumperPressed = new Thickness(1, 1, 0, 0), rightBumperPressed = new Thickness(-2, 1, 0, 0);//for some reason, negative margins need to be doubled to display properly. 
 
-		public Dictionary<GamepadButtonFlags, Image[]> buttonsToImages;
-		public Image dPad, leftBumper, rightBumper;
-		public Stick leftStick, rightStick;
+		private Dictionary<GamepadButtonFlags, Image[]> buttonsToImages;
+		private Image dPad, leftBumper, rightBumper;
+		private Stick leftStick, rightStick;
+		private RectangleGeometry leftArcClip, rightArcClip;
 
-		public ControllerDisplayUpdater(Dictionary<GamepadButtonFlags, Image[]> buttonsToImages, Image dPad, Image leftBumper, Image rightBumper, Stick leftStick, Stick rightStick) {
+		public ControllerDisplayUpdater(
+			Dictionary<GamepadButtonFlags, Image[]> buttonsToImages,
+			Image dPad, Image leftBumper, Image rightBumper,
+			Stick leftStick, Stick rightStick,
+			RectangleGeometry leftArcClip, RectangleGeometry rightArcClip) {
 			this.buttonsToImages = buttonsToImages;
 			this.dPad = dPad;
 			this.leftBumper = leftBumper;
 			this.rightBumper = rightBumper;
 			this.leftStick = leftStick;
 			this.rightStick = rightStick;
+			this.leftArcClip = leftArcClip;
+			this.rightArcClip = rightArcClip;
 			player1 = controller1.GetState();
 		}
 
@@ -45,6 +53,10 @@ namespace Tiny_Controller_Display {
 			double topMargin = Convert.ToDouble((player1.Gamepad.Buttons & GamepadButtonFlags.DPadDown) != 0) - Convert.ToDouble((player1.Gamepad.Buttons & GamepadButtonFlags.DPadUp) != 0) * 2.0;
 			double leftMargin = Convert.ToDouble((player1.Gamepad.Buttons & GamepadButtonFlags.DPadRight) != 0) - Convert.ToDouble((player1.Gamepad.Buttons & GamepadButtonFlags.DPadLeft) != 0) * 2.0;
 			return new Thickness(leftMargin, topMargin, 0, 0);
+		}
+
+		double TriggerToArcClipY(byte t) {
+			return t / 255.0 * 15.0;
 		}
 
 		public void Update() {
@@ -62,6 +74,8 @@ namespace Tiny_Controller_Display {
 			rightStick.unpressedSticktop.Margin = rightStick.pressedSticktop.Margin = StickValueToMargin(player1.Gamepad.RightThumbX, player1.Gamepad.RightThumbY);
 			leftBumper.Margin = ((player1.Gamepad.Buttons & GamepadButtonFlags.LeftShoulder) != 0) ? leftBumperPressed : noMargin;
 			rightBumper.Margin = ((player1.Gamepad.Buttons & GamepadButtonFlags.RightShoulder) != 0) ? rightBumperPressed : noMargin;
+			leftArcClip.Rect = new Rect(0, TriggerToArcClipY(player1.Gamepad.LeftTrigger), 57, 37);
+			rightArcClip.Rect = new Rect(0, TriggerToArcClipY(player1.Gamepad.RightTrigger), 57, 37);
 			dPad.Margin = GetDPadMargin();
 		}
 	}
