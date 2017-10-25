@@ -20,7 +20,7 @@ namespace Tiny_Controller_Display {
 
 	class ControllerDisplayUpdater {
 		private Controller controller1=new Controller(UserIndex.One);
-		private State player1;
+		private State player1 = new State();
 		private Task updateTask;
 		private Thickness noMargin = new Thickness(0), leftBumperPressed = new Thickness(1, 1, 0, 0), rightBumperPressed = new Thickness(-2, 1, 0, 0);//for some reason, negative margins need to be doubled to display properly. 
 
@@ -42,7 +42,6 @@ namespace Tiny_Controller_Display {
 			this.rightStick = rightStick;
 			this.leftArcClip = leftArcClip;
 			this.rightArcClip = rightArcClip;
-			player1 = controller1.GetState();
 		}
 
 		Thickness StickValueToMargin(short x, short y) {
@@ -60,7 +59,7 @@ namespace Tiny_Controller_Display {
 		}
 
 		public void Update() {
-			player1 = controller1.GetState();
+			controller1.GetState(out player1);
 			foreach(KeyValuePair<GamepadButtonFlags,Image[]> buttonToImages in buttonsToImages) {
 				foreach(Image i in buttonToImages.Value) {
 					if((player1.Gamepad.Buttons & buttonToImages.Key) != 0) {
