@@ -35,5 +35,12 @@
 				<RectangleGeometry Rect="0,0,57,37"/>
 			</Image.Clip>
 		</Image>
+		<Rectangle x:Name="rightClickMenuHolder" Fill="#0000" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="57">
+			<Rectangle.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Exit"/>
+				</ContextMenu>
+			</Rectangle.ContextMenu>
+		</Rectangle>
 	</Grid>
 </Window>
