@@ -1,4 +1,4 @@
-﻿<Window x:Name="ControllerDisplay" x:Class="Tiny_Controller_Display.MainWindow"
+﻿<Window x:Name="controllerDisplay" x:Class="Tiny_Controller_Display.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
