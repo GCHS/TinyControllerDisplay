@@ -18,11 +18,16 @@ namespace Tiny_Controller_Display {
 
 		private static Dictionary<UserIndex, ControllerDisplay> userIndexToDisplay = new Dictionary<UserIndex, ControllerDisplay>();
 
+		private Dictionary<ControllerDisplay, Point> displayToPositionDelta = null;
+
+		private static bool doUnifiedDisplayMovement = false;
+
 		public ControllerDisplay() : this(UserIndex.One) { }
 
 		public ControllerDisplay(UserIndex userIndex) {
 			InitializeComponent();
 			userIndexToDisplay[userIndex] = this;
+			Title = $"P{((int) userIndex)+1}";
 
 			SyncToggles();
 
@@ -49,11 +54,30 @@ namespace Tiny_Controller_Display {
 			Controller2Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.Two);
 			Controller3Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.Three);
 			Controller4Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.Four);
+
+			UnifiedMovementToggle.IsChecked = doUnifiedDisplayMovement;
 		}
 
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
-			if(e.ChangedButton == MouseButton.Left)
+			if(e.ChangedButton == MouseButton.Left) {
+				if(doUnifiedDisplayMovement) {
+					displayToPositionDelta = new Dictionary<ControllerDisplay, Point>();
+					foreach(var display in userIndexToDisplay.Values) {
+							displayToPositionDelta[display] = new Point(display.Left - Left, display.Top - Top);
+					}
+					LocationChanged += Window_LocationChanged;
+				}
 				DragMove();
+				LocationChanged -= Window_LocationChanged;
+			}
+		}
+		private void Window_LocationChanged(object sender, EventArgs e) {
+			if(doUnifiedDisplayMovement) {
+				foreach(var displayAndDelta in displayToPositionDelta) {
+					displayAndDelta.Key.Left = displayAndDelta.Value.X + Left;
+					displayAndDelta.Key.Top = displayAndDelta.Value.Y + Top;
+				}
+			}
 		}
 
 		private void ToggleDisplay(UserIndex userIndex) {
@@ -68,9 +92,13 @@ namespace Tiny_Controller_Display {
 					userIndexToDisplay[userIndex].Close();
 					userIndexToDisplay.Remove(userIndex);
 				}
-				foreach(ControllerDisplay display in userIndexToDisplay.Values) {
-					display.SyncToggles();
-				}
+				SyncTogglesOnAllDisplays();
+			}
+		}
+
+		private static void SyncTogglesOnAllDisplays() {
+			foreach(ControllerDisplay display in userIndexToDisplay.Values) {
+				display.SyncToggles();
 			}
 		}
 
@@ -82,5 +110,12 @@ namespace Tiny_Controller_Display {
 		private void Controller2Toggle_Click(object sender, RoutedEventArgs e) => ToggleDisplay(UserIndex.Two);
 		private void Controller3Toggle_Click(object sender, RoutedEventArgs e) => ToggleDisplay(UserIndex.Three);
 		private void Controller4Toggle_Click(object sender, RoutedEventArgs e) => ToggleDisplay(UserIndex.Four);
+
+		private void UnifiedMovementToggle_Click(object sender, RoutedEventArgs e) {
+			lock(userIndexToDisplay) {
+				doUnifiedDisplayMovement = !doUnifiedDisplayMovement;
+				SyncTogglesOnAllDisplays();
+			}
+		}
 	}
 }

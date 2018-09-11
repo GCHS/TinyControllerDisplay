@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tiny_Controller_Display"
         mc:Ignorable="d"
-        Title="Tiny Controller Display"
         Height="37px" Width="57px"
         ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Topmost="True">
 	<Grid>
@@ -43,9 +42,9 @@
 					<MenuItem x:Name="Controller3Toggle" Header="Controller 3" IsCheckable="True" Click="Controller3Toggle_Click"/>
 					<MenuItem x:Name="Controller4Toggle" Header="Controller 4" IsCheckable="True" Click="Controller4Toggle_Click"/>
 
-					<!--<MenuItem IsEnabled="False" IsTabStop="False"/>-->
+					<MenuItem IsEnabled="False" IsTabStop="False"/>
 
-					<!--<MenuItem Header="Exit"/>-->
+					<MenuItem x:Name="UnifiedMovementToggle" Header="Move Displays Together" IsCheckable="True" Click="UnifiedMovementToggle_Click"/>
 				</ContextMenu>
 			</Rectangle.ContextMenu>
 		</Rectangle>
