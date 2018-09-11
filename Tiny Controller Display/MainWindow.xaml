@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tiny_Controller_Display"
         mc:Ignorable="d"
         Height="37px" Width="57px"
-        ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Topmost="True">
+        ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Topmost="True" Closing="Window_Closing">
 	<Grid>
 		<Image x:Name="leftBumper" Source="left_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightBumper" Source="right_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>

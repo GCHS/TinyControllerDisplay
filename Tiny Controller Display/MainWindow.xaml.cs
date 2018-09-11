@@ -87,12 +87,10 @@ namespace Tiny_Controller_Display {
 						Top = Top,
 						Left = NewDisplayLeftFromUserIndex(userIndex)
 					}).Show();
-
+					SyncTogglesOnAllDisplays();
 				} else {//toggling off
-					userIndexToDisplay[userIndex].Close();
-					userIndexToDisplay.Remove(userIndex);
+					userIndexToDisplay[userIndex].Close();//display removes itself on closure and updates all toggles
 				}
-				SyncTogglesOnAllDisplays();
 			}
 		}
 
@@ -116,6 +114,11 @@ namespace Tiny_Controller_Display {
 				doMoveDisplaysTogether = !doMoveDisplaysTogether;
 				SyncTogglesOnAllDisplays();
 			}
+		}
+
+		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+			userIndexToDisplay.Remove(displayUpdater.Controller.UserIndex);
+			SyncTogglesOnAllDisplays();
 		}
 	}
 }
