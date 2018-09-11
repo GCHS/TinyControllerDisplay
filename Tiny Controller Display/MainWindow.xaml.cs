@@ -20,7 +20,7 @@ namespace Tiny_Controller_Display {
 
 		private Dictionary<ControllerDisplay, Point> displayToPositionDelta = null;
 
-		private static bool doUnifiedDisplayMovement = false;
+		private static bool doMoveDisplaysTogether = true;
 
 		public ControllerDisplay() : this(UserIndex.One) { }
 
@@ -55,12 +55,12 @@ namespace Tiny_Controller_Display {
 			Controller3Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.Three);
 			Controller4Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.Four);
 
-			UnifiedMovementToggle.IsChecked = doUnifiedDisplayMovement;
+			MoveDisplaysTogetherToggle.IsChecked = doMoveDisplaysTogether;
 		}
 
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
 			if(e.ChangedButton == MouseButton.Left) {
-				if(doUnifiedDisplayMovement) {
+				if(doMoveDisplaysTogether) {
 					displayToPositionDelta = new Dictionary<ControllerDisplay, Point>();
 					foreach(var display in userIndexToDisplay.Values) {
 							displayToPositionDelta[display] = new Point(display.Left - Left, display.Top - Top);
@@ -72,7 +72,7 @@ namespace Tiny_Controller_Display {
 			}
 		}
 		private void Window_LocationChanged(object sender, EventArgs e) {
-			if(doUnifiedDisplayMovement) {
+			if(doMoveDisplaysTogether) {
 				foreach(var displayAndDelta in displayToPositionDelta) {
 					displayAndDelta.Key.Left = displayAndDelta.Value.X + Left;
 					displayAndDelta.Key.Top = displayAndDelta.Value.Y + Top;
@@ -113,7 +113,7 @@ namespace Tiny_Controller_Display {
 
 		private void UnifiedMovementToggle_Click(object sender, RoutedEventArgs e) {
 			lock(userIndexToDisplay) {
-				doUnifiedDisplayMovement = !doUnifiedDisplayMovement;
+				doMoveDisplaysTogether = !doMoveDisplaysTogether;
 				SyncTogglesOnAllDisplays();
 			}
 		}

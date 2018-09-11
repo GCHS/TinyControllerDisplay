@@ -44,7 +44,7 @@
 
 					<MenuItem IsEnabled="False" IsTabStop="False"/>
 
-					<MenuItem x:Name="UnifiedMovementToggle" Header="Move Displays Together" IsCheckable="True" Click="UnifiedMovementToggle_Click"/>
+					<MenuItem x:Name="MoveDisplaysTogetherToggle" Header="Move Displays Together" IsCheckable="True" Click="UnifiedMovementToggle_Click"/>
 				</ContextMenu>
 			</Rectangle.ContextMenu>
 		</Rectangle>
