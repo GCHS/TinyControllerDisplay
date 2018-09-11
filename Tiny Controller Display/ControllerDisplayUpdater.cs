@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using SharpDX.XInput;
-using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
-using System.Threading;
 
 namespace Tiny_Controller_Display {
 	struct Stick {
@@ -22,10 +18,10 @@ namespace Tiny_Controller_Display {
 	class ControllerDisplayUpdater {
 		private Controller controller1=new Controller(UserIndex.One);
 		private State player1 = new State();
-		private Task updateTask;
-		private Thickness noMargin = new Thickness(0), leftBumperPressed = new Thickness(1, 1, 0, 0), rightBumperPressed = new Thickness(-2, 1, 0, 0);//for some reason, negative margins need to be doubled to display properly. 
+		private readonly Task updateTask;
+		private Thickness noMargin = new Thickness(0), leftBumperPressed = new Thickness(1, 1, 0, 0), rightBumperPressed = new Thickness(-2, 1, 0, 0);//negative margins need to be doubled to display properly. 
 
-		private Dictionary<GamepadButtonFlags, Image[]> buttonsToImages;
+		private readonly Dictionary<GamepadButtonFlags, Image[]> buttonsToImages;
 		private Image dPad, leftBumper, rightBumper;
 		private Stick leftStick, rightStick;
 		private RectangleGeometry leftArcClip, rightArcClip;
@@ -47,7 +43,7 @@ namespace Tiny_Controller_Display {
 		}
 
 		Thickness StickValueToMargin(short x, short y) {
-			return new Thickness((x < 0 ? x * 2.0 / 32768.0 : x / 32767.0) * 2.0, (y < 0 ? y / 32768.0 : y * 2.0 / 32767.0) * -2.0, 0, 0);//for some reason, negative margins need to be doubled to display properly. 
+			return new Thickness((x < 0 ? x * 2.0 / 32768.0 : x / 32767.0) * 2.0, (y < 0 ? y / 32768.0 : y * 2.0 / 32767.0) * -2.0, 0, 0);//negative margins need to be doubled to display properly. 
 		}
 
 		Thickness GetDPadMargin() {
