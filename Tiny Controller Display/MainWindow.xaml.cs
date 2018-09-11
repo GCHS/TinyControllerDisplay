@@ -24,10 +24,7 @@ namespace Tiny_Controller_Display {
 			InitializeComponent();
 			userIndexToDisplay[userIndex] = this;
 
-			if(userIndexToDisplay.ContainsKey(UserIndex.One))   { Controller1Toggle.IsChecked   = true; }
-			if(userIndexToDisplay.ContainsKey(UserIndex.Two))   { Controller2Toggle.IsChecked   = true; }
-			if(userIndexToDisplay.ContainsKey(UserIndex.Three)) { Controller3Toggle.IsChecked   = true; }
-			if(userIndexToDisplay.ContainsKey(UserIndex.Four))  { Controller4Toggle.IsChecked   = true; }
+			SyncToggles();
 
 			displayUpdater = new ControllerDisplayUpdater(
 				userIndex,
@@ -47,6 +44,13 @@ namespace Tiny_Controller_Display {
 			);
 		}
 
+		private void SyncToggles() {
+			if(userIndexToDisplay.ContainsKey(UserIndex.One)) { Controller1Toggle.IsChecked = true; }
+			if(userIndexToDisplay.ContainsKey(UserIndex.Two)) { Controller2Toggle.IsChecked = true; }
+			if(userIndexToDisplay.ContainsKey(UserIndex.Three)) { Controller3Toggle.IsChecked = true; }
+			if(userIndexToDisplay.ContainsKey(UserIndex.Four)) { Controller4Toggle.IsChecked = true; }
+		}
+
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
 			if(e.ChangedButton == MouseButton.Left)
 				DragMove();
@@ -62,6 +66,9 @@ namespace Tiny_Controller_Display {
 				}else{//toggling off
 					userIndexToDisplay[userIndex].Close();
 					userIndexToDisplay.Remove(userIndex);
+				}
+				foreach(ControllerDisplay display in userIndexToDisplay.Values){
+					display.SyncToggles();
 				}
 			}
 		}
