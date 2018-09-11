@@ -1,4 +1,4 @@
-﻿<Window x:Name="ControllerDisplay" x:Class="Tiny_Controller_Display.MainWindow"
+﻿<Window x:Class="Tiny_Controller_Display.ControllerDisplay"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -38,7 +38,14 @@
 		<Rectangle x:Name="rightClickMenuHolder" Fill="#0000" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="57">
 			<Rectangle.ContextMenu>
 				<ContextMenu>
-					<MenuItem Header="Exit"/>
+					<MenuItem x:Name="Controller1Toggle" Header="Controller 1" IsCheckable="True" Click="Controller1Toggle_Click"/>
+					<MenuItem x:Name="Controller2Toggle" Header="Controller 2" IsCheckable="True" Click="Controller2Toggle_Click"/>
+					<MenuItem x:Name="Controller3Toggle" Header="Controller 3" IsCheckable="True" Click="Controller3Toggle_Click"/>
+					<MenuItem x:Name="Controller4Toggle" Header="Controller 4" IsCheckable="True" Click="Controller4Toggle_Click"/>
+
+					<!--<MenuItem IsEnabled="False" IsTabStop="False"/>-->
+
+					<!--<MenuItem Header="Exit"/>-->
 				</ContextMenu>
 			</Rectangle.ContextMenu>
 		</Rectangle>
