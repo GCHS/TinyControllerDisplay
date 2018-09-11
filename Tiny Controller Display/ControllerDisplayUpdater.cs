@@ -16,7 +16,7 @@ namespace Tiny_Controller_Display {
 	}
 
 	class ControllerDisplayUpdater {
-		private Controller controller;
+		public Controller Controller { get; private set; }
 		private State player = new State();
 		private readonly Task updateTask;
 		private Thickness noMargin = new Thickness(0), leftBumperPressed = new Thickness(1, 1, 0, 0), rightBumperPressed = new Thickness(-2, 1, 0, 0);//negative margins need to be doubled to display properly. 
@@ -32,7 +32,7 @@ namespace Tiny_Controller_Display {
 			Image dPad, Image leftBumper, Image rightBumper,
 			Stick leftStick, Stick rightStick,
 			RectangleGeometry leftArcClip, RectangleGeometry rightArcClip) {
-			controller = new Controller(userIndex);
+			Controller = new Controller(userIndex);
 			this.buttonsToImages = buttonsToImages;
 			this.dPad = dPad;
 			this.leftBumper = leftBumper;
@@ -59,7 +59,7 @@ namespace Tiny_Controller_Display {
 		}
 
 		private void Update() {
-			controller.GetState(out player);
+			Controller.GetState(out player);
 			foreach(KeyValuePair<GamepadButtonFlags,Image[]> buttonToImages in buttonsToImages) {
 				foreach(Image i in buttonToImages.Value) {
 					if((player.Gamepad.Buttons & buttonToImages.Key) != 0) {

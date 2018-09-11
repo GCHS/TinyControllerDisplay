@@ -45,10 +45,10 @@ namespace Tiny_Controller_Display {
 		}
 
 		private void SyncToggles() {
-			if(userIndexToDisplay.ContainsKey(UserIndex.One)) { Controller1Toggle.IsChecked = true; }
-			if(userIndexToDisplay.ContainsKey(UserIndex.Two)) { Controller2Toggle.IsChecked = true; }
-			if(userIndexToDisplay.ContainsKey(UserIndex.Three)) { Controller3Toggle.IsChecked = true; }
-			if(userIndexToDisplay.ContainsKey(UserIndex.Four)) { Controller4Toggle.IsChecked = true; }
+			Controller1Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.One);
+			Controller2Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.Two);
+			Controller3Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.Three);
+			Controller4Toggle.IsChecked = userIndexToDisplay.ContainsKey(UserIndex.Four);
 		}
 
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -58,21 +58,25 @@ namespace Tiny_Controller_Display {
 
 		private void ToggleDisplay(UserIndex userIndex) {
 			lock(userIndexToDisplay) {
-				if(!userIndexToDisplay.ContainsKey(userIndex)) {
+				if(!userIndexToDisplay.ContainsKey(userIndex)) {//toggling on
 					(userIndexToDisplay[userIndex] = new ControllerDisplay(userIndex) {
 						Top = Top,
-						Left = Left + Math.Floor(Width * 1.25)
+						Left = NewDisplayLeftFromUserIndex(userIndex)
 					}).Show();
-				}else{//toggling off
+
+				} else {//toggling off
 					userIndexToDisplay[userIndex].Close();
 					userIndexToDisplay.Remove(userIndex);
 				}
-				foreach(ControllerDisplay display in userIndexToDisplay.Values){
+				foreach(ControllerDisplay display in userIndexToDisplay.Values) {
 					display.SyncToggles();
 				}
 			}
 		}
 
+		private double NewDisplayLeftFromUserIndex(UserIndex userIndex) {
+			return Left + Width * ((int)userIndex - (int)displayUpdater.Controller.UserIndex) * 1.25;
+		}
 
 		private void Controller1Toggle_Click(object sender, RoutedEventArgs e) => ToggleDisplay(UserIndex.One);
 		private void Controller2Toggle_Click(object sender, RoutedEventArgs e) => ToggleDisplay(UserIndex.Two);
