@@ -43,8 +43,9 @@ namespace Tiny_Controller_Display {
 					{GamepadButtonFlags.Start, new Image[1]{startButton}},
 					{GamepadButtonFlags.Back, new Image[1]{selectButton}}
 				},
-				dPad, leftBumper, rightBumper,
-				new Stick(leftSticktop, leftSticktopPressed), new Stick(rightSticktop, rightSticktopPressed),
+				dPadTranslation, leftBumperTranslation, rightBumperTranslation,
+				new Stick(leftSticktop.RenderTransform as TranslateTransform, leftSticktopPressed.RenderTransform as TranslateTransform),
+				new Stick(rightSticktop.RenderTransform as TranslateTransform, rightSticktopPressed.RenderTransform as TranslateTransform),
 				leftTrigger.Clip as RectangleGeometry, rightTrigger.Clip as RectangleGeometry
 			);
 		}
