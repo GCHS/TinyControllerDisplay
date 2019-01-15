@@ -8,19 +8,47 @@
         Height="37px" Width="57px"
         ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Topmost="True" Closing="Window_Closing">
 	<Grid>
-		<Image x:Name="leftBumper" Source="left_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="rightBumper" Source="right_bumper.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftBumper" Source="left_bumper.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.RenderTransform>
+				<TranslateTransform x:Name="leftBumperTranslation"/>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="rightBumper" Source="right_bumper.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.RenderTransform>
+				<TranslateTransform x:Name="rightBumperTranslation"/>
+			</Image.RenderTransform>
+		</Image>
 		<Image x:Name="faceplate" Source="faceplate.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="bottomButton" Source="bottom_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="dPad" Source="dpad.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="dPad" Source="dpad.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.RenderTransform>
+				<TranslateTransform x:Name="dPadTranslation"/>
+			</Image.RenderTransform>
+		</Image>
 		<Image x:Name="leftButton" Source="left_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="leftStickwellPressed" Source="left_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px" />
-		<Image x:Name="leftSticktop" Source="left_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="leftSticktopPressed" Source="left_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="leftSticktop" Source="left_sticktop.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.RenderTransform>
+				<TranslateTransform x:Name="leftSticktopTranslation"/>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="leftSticktopPressed" Source="left_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.RenderTransform>
+				<TranslateTransform x:Name="leftSticktopPressedTranslation"/>
+			</Image.RenderTransform>
+		</Image>
 		<Image x:Name="rightButton" Source="right_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="rightStickwellPressed" Source="right_stickwell_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="rightSticktop" Source="right_sticktop.png" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="rightSticktopPressed" Source="right_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px"/>
+		<Image x:Name="rightSticktop" Source="right_sticktop.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.RenderTransform>
+				<TranslateTransform x:Name="rightSticktopTranslation"/>
+			</Image.RenderTransform>
+		</Image>
+		<Image x:Name="rightSticktopPressed" Source="right_sticktop_pressed.png" Stretch="Uniform" Width="57px" Height="37px">
+			<Image.RenderTransform>
+				<TranslateTransform x:Name="rightSticktopPressedTranslation"/>
+			</Image.RenderTransform>
+		</Image>
 		<Image x:Name="selectButton" Source="select_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="startButton" Source="start_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
 		<Image x:Name="topButton" Source="top_button.png" Stretch="Uniform" Width="57px" Height="37px"/>
