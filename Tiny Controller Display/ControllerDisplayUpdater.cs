@@ -82,8 +82,8 @@ namespace Tiny_Controller_Display {
 			(rightStick.Dx, rightStick.Dy) = StickInputToDisplacement(player.Gamepad.RightThumbX, player.Gamepad.RightThumbY);
 			(leftBumper.X, leftBumper.Y) = ((player.Gamepad.Buttons & GamepadButtonFlags.LeftShoulder) != 0) ? (1, 1) : (0, 0);
 			(rightBumper.X, rightBumper.Y) = ((player.Gamepad.Buttons & GamepadButtonFlags.RightShoulder) != 0) ? (-1, 1) : (0, 0);
-			dPad.X = Convert.ToDouble((player.Gamepad.Buttons & GamepadButtonFlags.DPadDown) != 0) - Convert.ToDouble((player.Gamepad.Buttons & GamepadButtonFlags.DPadUp) != 0);
-			dPad.Y = Convert.ToDouble((player.Gamepad.Buttons & GamepadButtonFlags.DPadRight) != 0) - Convert.ToDouble((player.Gamepad.Buttons & GamepadButtonFlags.DPadLeft) != 0);
+			dPad.X = Convert.ToDouble((player.Gamepad.Buttons & GamepadButtonFlags.DPadRight) != 0) - Convert.ToDouble((player.Gamepad.Buttons & GamepadButtonFlags.DPadLeft) != 0);
+			dPad.Y = Convert.ToDouble((player.Gamepad.Buttons & GamepadButtonFlags.DPadDown) != 0) - Convert.ToDouble((player.Gamepad.Buttons & GamepadButtonFlags.DPadUp) != 0);
 			leftArcClip.Rect = new Rect(0, TriggerToArcClipY(player.Gamepad.LeftTrigger), 57, 37);
 			rightArcClip.Rect = new Rect(0, TriggerToArcClipY(player.Gamepad.RightTrigger), 57, 37);
 		}
