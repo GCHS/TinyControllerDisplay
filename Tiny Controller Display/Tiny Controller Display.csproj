@@ -1,176 +1,110 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0B3F4A45-6563-4786-BF77-56DF889EEBDE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Tiny_Controller_Display</RootNamespace>
-    <AssemblyName>Tiny Controller Display</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
+    <AssemblyTitle>Tiny Controller Display</AssemblyTitle>
+    <Product>Tiny Controller Display</Product>
+    <Copyright>Copyright ©  2017</Copyright>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>tcd.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SharpDX, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.4.0.1\lib\net45\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XInput, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.XInput.4.0.1\lib\net45\SharpDX.XInput.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Resource Include="xb1_elite\bottom_button.png" />
+    <Resource Include="xb1_elite\dpad.png" />
+    <Resource Include="xb1_elite\faceplate.png" />
+    <Resource Include="xb1_elite\left_bumper.png" />
+    <Resource Include="xb1_elite\left_button.png" />
+    <Resource Include="xb1_elite\left_sticktop.png" />
+    <Resource Include="xb1_elite\left_sticktop_pressed.png" />
+    <Resource Include="xb1_elite\left_stickwell_pressed.png" />
+    <Resource Include="xb1_elite\left_trigger.png" />
+    <Resource Include="xb1_elite\right_bumper.png" />
+    <Resource Include="xb1_elite\right_button.png" />
+    <Resource Include="xb1_elite\right_sticktop.png" />
+    <Resource Include="xb1_elite\right_sticktop_pressed.png" />
+    <Resource Include="xb1_elite\right_stickwell_pressed.png" />
+    <Resource Include="xb1_elite\right_trigger.png" />
+    <Resource Include="xb1_elite\select_button.png" />
+    <Resource Include="xb1_elite\start_button.png" />
+    <Resource Include="xb1_elite\top_button.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ControllerDisplayUpdater.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="bottom_button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="dpad.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="faceplate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="left_bumper.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="left_button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="left_sticktop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="left_sticktop_pressed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="left_stickwell_pressed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="left_trigger.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="right_bumper.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="right_button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="right_sticktop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="right_sticktop_pressed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="right_stickwell_pressed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="right_trigger.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="select_button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="start_button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="top_button.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="dualsense\bottom_button.png" />
+		<Resource Include="dualsense\dpad.png" />
+		<Resource Include="dualsense\faceplate.png" />
+		<Resource Include="dualsense\left_bumper.png" />
+		<Resource Include="dualsense\left_button.png" />
+		<Resource Include="dualsense\left_sticktop.png" />
+		<Resource Include="dualsense\left_sticktop_pressed.png" />
+		<Resource Include="dualsense\left_stickwell_pressed.png" />
+		<Resource Include="dualsense\left_trigger.png" />
+		<Resource Include="dualsense\right_bumper.png" />
+		<Resource Include="dualsense\right_button.png" />
+		<Resource Include="dualsense\right_sticktop.png" />
+		<Resource Include="dualsense\right_sticktop_pressed.png" />
+		<Resource Include="dualsense\right_stickwell_pressed.png" />
+		<Resource Include="dualsense\right_trigger.png" />
+		<Resource Include="dualsense\select_button.png" />
+		<Resource Include="dualsense\start_button.png" />
+		<Resource Include="dualsense\top_button.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="ds4_rev2\bottom_button.png" />
+		<Resource Include="ds4_rev2\dpad.png" />
+		<Resource Include="ds4_rev2\faceplate.png" />
+		<Resource Include="ds4_rev2\left_bumper.png" />
+		<Resource Include="ds4_rev2\left_button.png" />
+		<Resource Include="ds4_rev2\left_sticktop.png" />
+		<Resource Include="ds4_rev2\left_sticktop_pressed.png" />
+		<Resource Include="ds4_rev2\left_stickwell_pressed.png" />
+		<Resource Include="ds4_rev2\left_trigger.png" />
+		<Resource Include="ds4_rev2\right_bumper.png" />
+		<Resource Include="ds4_rev2\right_button.png" />
+		<Resource Include="ds4_rev2\right_sticktop.png" />
+		<Resource Include="ds4_rev2\right_sticktop_pressed.png" />
+		<Resource Include="ds4_rev2\right_stickwell_pressed.png" />
+		<Resource Include="ds4_rev2\right_trigger.png" />
+		<Resource Include="ds4_rev2\select_button.png" />
+		<Resource Include="ds4_rev2\start_button.png" />
+		<Resource Include="ds4_rev2\top_button.png" />
+	</ItemGroup>
   <ItemGroup>
     <Resource Include="tcd.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon base files\256.ico" />
+    <Resource Include="icon base files\16.ico" />
     <Resource Include="icon base files\32.ico" />
     <Resource Include="icon base files\48.ico" />
     <Resource Include="icon base files\64.ico" />
+    <Resource Include="icon base files\256.ico" />
     <Resource Include="icon base files\controller_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon base files\16.ico" />
+    <PackageReference Include="SharpDX.XInput" Version="4.2.0" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
 </Project>

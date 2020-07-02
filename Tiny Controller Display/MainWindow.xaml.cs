@@ -30,6 +30,8 @@ namespace Tiny_Controller_Display {
 			Title = $"P{((int) userIndex)+1}";
 
 			SyncToggles();
+			
+			Resources["artFolder"] = new ControllerType();
 
 			displayUpdater = new ControllerDisplayUpdater(
 				userIndex,
@@ -48,6 +50,7 @@ namespace Tiny_Controller_Display {
 				new Stick(rightSticktop.RenderTransform as TranslateTransform, rightSticktopPressed.RenderTransform as TranslateTransform),
 				leftTrigger.Clip as RectangleGeometry, rightTrigger.Clip as RectangleGeometry
 			);
+
 		}
 
 		private void SyncToggles() {
@@ -120,6 +123,10 @@ namespace Tiny_Controller_Display {
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
 			userIndexToDisplay.Remove(displayUpdater.Controller.UserIndex);
 			SyncTogglesOnAllDisplays();
+		}
+
+		private void controllerTypeChanger_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+			Resources["artFolder"] = ((sender as ListBox).SelectedItem as ListBoxItem).Tag;
 		}
 	}
 }
