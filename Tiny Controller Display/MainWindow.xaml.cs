@@ -14,6 +14,10 @@ namespace Tiny_Controller_Display {
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class ControllerDisplay : Window {
+		public const double BaseWidth = 57, BaseHeight = 37;
+
+		public readonly static int[] ZoomValues = Enumerable.Range(1, 8).ToArray();
+
 		private ControllerDisplayUpdater displayUpdater;
 
 		private static Dictionary<UserIndex, ControllerDisplay> userIndexToDisplay = new Dictionary<UserIndex, ControllerDisplay>();
@@ -26,6 +30,7 @@ namespace Tiny_Controller_Display {
 
 		public ControllerDisplay(UserIndex userIndex) {
 			InitializeComponent();
+
 			userIndexToDisplay[userIndex] = this;
 			Title = $"P{((int) userIndex)+1}";
 
@@ -127,6 +132,15 @@ namespace Tiny_Controller_Display {
 
 		private void controllerTypeChanger_SelectionChanged(object sender, SelectionChangedEventArgs e) {
 			Resources["artFolder"] = ((sender as ListBox).SelectedItem as ListBoxItem).Tag;
+		}
+
+		private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+			int scale = (int)(sender as ComboBox).SelectedItem;
+			(Width, Height) = (BaseWidth * scale, BaseHeight * scale);
+		}
+
+		private void Window_SizeChanged(object sender, SizeChangedEventArgs e) {
+			(containingGridScale.ScaleX, containingGridScale.ScaleY) = (Width / BaseWidth, Height / BaseHeight);
 		}
 	}
 }

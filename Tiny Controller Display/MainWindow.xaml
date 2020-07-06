@@ -3,72 +3,75 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tiny_Controller_Display"
+        xmlns:local="clr-namespace:Tiny_Controller_Display" xmlns:System="clr-namespace:System;assembly=System.Runtime"
         mc:Ignorable="d"
-        Height="37px" Width="57px"
-        ResizeMode="NoResize" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Topmost="True" Closing="Window_Closing">
+        Width="57" Height="37"
+        ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" MouseDown="Window_MouseDown" Topmost="True" Closing="Window_Closing" SizeChanged="Window_SizeChanged">
 	<Window.Resources>
 		<local:ControllerType x:Key="artFolder"/>
 		<local:Concatenater x:Key="Concatenater"/>
 	</Window.Resources>
-	<Grid>
-		<Image x:Name="leftBumper" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_bumper.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+	<Grid RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}" HorizontalAlignment="Left" VerticalAlignment="Top">
+		<Grid.RenderTransform>
+			<ScaleTransform x:Name="containingGridScale"/>
+		</Grid.RenderTransform>
+		<Image x:Name="leftBumper" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_bumper.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.RenderTransform>
 				<TranslateTransform x:Name="leftBumperTranslation"/>
 			</Image.RenderTransform>
 		</Image>
-		<Image x:Name="rightBumper" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_bumper.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+		<Image x:Name="rightBumper" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_bumper.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.RenderTransform>
 				<TranslateTransform x:Name="rightBumperTranslation"/>
 			</Image.RenderTransform>
 		</Image>
 
-		<Image x:Name="faceplate" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/faceplate.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px" />
+		<Image x:Name="faceplate" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/faceplate.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}" />
 		
-		<Image x:Name="bottomButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/bottom_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="dPad" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/dpad.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+		<Image x:Name="bottomButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/bottom_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}"/>
+		<Image x:Name="dPad" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/dpad.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.RenderTransform>
 				<TranslateTransform x:Name="dPadTranslation"/>
 			</Image.RenderTransform>
 		</Image>
-		<Image x:Name="leftButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="leftStickwellPressed" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_stickwell_pressed.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px" />
-		<Image x:Name="leftSticktop" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_sticktop.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+		<Image x:Name="leftButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}"/>
+		<Image x:Name="leftStickwellPressed" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_stickwell_pressed.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}" />
+		<Image x:Name="leftSticktop" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_sticktop.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.RenderTransform>
 				<TranslateTransform x:Name="leftSticktopTranslation"/>
 			</Image.RenderTransform>
 		</Image>
-		<Image x:Name="leftSticktopPressed" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_sticktop_pressed.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+		<Image x:Name="leftSticktopPressed" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_sticktop_pressed.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.RenderTransform>
 				<TranslateTransform x:Name="leftSticktopPressedTranslation"/>
 			</Image.RenderTransform>
 		</Image>
-		<Image x:Name="rightButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="rightStickwellPressed" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_stickwell_pressed.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="rightSticktop" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_sticktop.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+		<Image x:Name="rightButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}"/>
+		<Image x:Name="rightStickwellPressed" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_stickwell_pressed.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}"/>
+		<Image x:Name="rightSticktop" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_sticktop.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.RenderTransform>
 				<TranslateTransform x:Name="rightSticktopTranslation"/>
 			</Image.RenderTransform>
 		</Image>
-		<Image x:Name="rightSticktopPressed" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_sticktop_pressed.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+		<Image x:Name="rightSticktopPressed" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_sticktop_pressed.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.RenderTransform>
 				<TranslateTransform x:Name="rightSticktopPressedTranslation"/>
 			</Image.RenderTransform>
 		</Image>
-		<Image x:Name="selectButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/select_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="startButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/start_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="topButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/top_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px"/>
-		<Image x:Name="leftTrigger" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_trigger.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+		<Image x:Name="selectButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/select_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}"/>
+		<Image x:Name="startButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/start_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}"/>
+		<Image x:Name="topButton" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/top_button.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}"/>
+		<Image x:Name="leftTrigger" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/left_trigger.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.Clip>
 				<RectangleGeometry Rect="0,0,57,37"/>
 			</Image.Clip>
 		</Image>
-		<Image x:Name="rightTrigger" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_trigger.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="57px" Height="37px">
+		<Image x:Name="rightTrigger" DataContext="{DynamicResource artFolder}" Source="{Binding Path=FolderName, ConverterParameter='/right_trigger.png', Converter={StaticResource Concatenater}, Mode=OneWay}" Stretch="Uniform" Width="{x:Static local:ControllerDisplay.BaseWidth}" Height="{x:Static local:ControllerDisplay.BaseHeight}">
 			<Image.Clip>
 				<RectangleGeometry Rect="0,0,57,37"/>
 			</Image.Clip>
 		</Image>
-		<Rectangle x:Name="rightClickMenuHolder" Fill="#0000" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="57">
+		<Rectangle x:Name="rightClickMenuHolder" Fill="#0000" HorizontalAlignment="Left" Height="{x:Static local:ControllerDisplay.BaseHeight}" VerticalAlignment="Top" Width="{x:Static local:ControllerDisplay.BaseWidth}">
 			<Rectangle.ContextMenu>
 				<ContextMenu>
 					<MenuItem x:Name="Controller1Toggle" Header="Controller 1" IsCheckable="True" Click="Controller1Toggle_Click"/>
@@ -77,7 +80,7 @@
 					<MenuItem x:Name="Controller4Toggle" Header="Controller 4" IsCheckable="True" Click="Controller4Toggle_Click"/>
 
 					<Separator/>
-					
+
 					<Label Content="Controller Type:"/>
 					<ListBox x:Name="controllerTypeChanger" SelectionChanged="controllerTypeChanger_SelectionChanged">
 						<ListBoxItem Content="XBOX One Elite" IsSelected="True">
@@ -100,6 +103,16 @@
 					<Separator/>
 
 					<MenuItem x:Name="MoveDisplaysTogetherToggle" Header="Move Displays Together" IsCheckable="True" Click="UnifiedMovementToggle_Click"/>
+
+					<Separator/>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+						<Label Content="Scale:"/>
+						<ComboBox ItemsSource="{x:Static local:ControllerDisplay.ZoomValues}" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1" ItemStringFormat="{}{0:#%}"/>
+					</Grid>
 				</ContextMenu>
 			</Rectangle.ContextMenu>
 		</Rectangle>
