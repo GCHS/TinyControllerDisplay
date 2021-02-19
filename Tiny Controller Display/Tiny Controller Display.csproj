@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Tiny_Controller_Display</RootNamespace>
@@ -7,7 +7,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyTitle>Tiny Controller Display</AssemblyTitle>
     <Product>Tiny Controller Display</Product>
-    <Copyright>Copyright ©  2017</Copyright>
+    <Copyright>Copyright ©  2021</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -19,6 +19,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>tcd.ico</ApplicationIcon>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="xb1_elite\bottom_button.png" />

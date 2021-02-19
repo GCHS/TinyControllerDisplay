@@ -82,7 +82,7 @@
 					<Separator/>
 
 					<Label Content="Controller Type:"/>
-					<ListBox x:Name="controllerTypeChanger" SelectionChanged="controllerTypeChanger_SelectionChanged">
+					<ListBox x:Name="controllerTypeChanger" SelectionChanged="ControllerTypeChanger_SelectionChanged">
 						<ListBoxItem Content="XBOX One Elite" IsSelected="True">
 							<ListBoxItem.Tag>
 								<local:ControllerType Type="XB1Elite"/>

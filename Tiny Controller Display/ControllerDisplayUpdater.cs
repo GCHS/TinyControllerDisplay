@@ -33,13 +33,15 @@ namespace Tiny_Controller_Display {
 
 	class ControllerDisplayUpdater {
 		public Controller Controller { get; private set; }
-		private State player = new State();
+		private State player = new();
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0052:Remove unread private members",
+			Justification = "False positive on static analysis; updateTask does work once instantiated the compiler can't see")]
 		private readonly Task updateTask;
 
 		private readonly Dictionary<GamepadButtonFlags, Image[]> buttonsToImages;
-		private TranslateTransform dPad, leftBumper, rightBumper;
+		private readonly TranslateTransform dPad, leftBumper, rightBumper;
 		private Stick leftStick, rightStick;
-		private RectangleGeometry leftArcClip, rightArcClip;
+		private readonly RectangleGeometry leftArcClip, rightArcClip;
 
 		public ControllerDisplayUpdater(
 			UserIndex userIndex,
@@ -59,11 +61,11 @@ namespace Tiny_Controller_Display {
 			updateTask = BackgroundUpdate();
 		}
 
-		(double, double) StickInputToDisplacement(short x, short y) {
+		static (double, double) StickInputToDisplacement(short x, short y) {
 			return ((x < 0 ? x / 32768.0 : x / 32767.0) * 2.0, (y < 0 ? y / 32768.0 : y / 32767.0) * -2.0);
 		}
 
-		double TriggerToArcClipY(byte t) {
+		static double TriggerToArcClipY(byte t) {
 			return t / 255.0 * 15.0;
 		}
 

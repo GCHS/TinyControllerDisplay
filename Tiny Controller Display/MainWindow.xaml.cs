@@ -18,11 +18,11 @@ namespace Tiny_Controller_Display {
 
 		public readonly static int[] ZoomValues = Enumerable.Range(1, 8).ToArray();
 
-		private ControllerDisplayUpdater displayUpdater;
+		private readonly ControllerDisplayUpdater displayUpdater;
 
-		private static Dictionary<UserIndex, ControllerDisplay> userIndexToDisplay = new Dictionary<UserIndex, ControllerDisplay>();
+		private static readonly Dictionary<UserIndex, ControllerDisplay> userIndexToDisplay = new();
 
-		private Dictionary<ControllerDisplay, Point> displayToPositionDelta = null;
+		private Dictionary<ControllerDisplay, Point> displayToPositionDelta = new();
 
 		private static bool doMoveDisplaysTogether = true;
 
@@ -51,9 +51,11 @@ namespace Tiny_Controller_Display {
 					{GamepadButtonFlags.Back, new Image[1]{selectButton}}
 				},
 				dPadTranslation, leftBumperTranslation, rightBumperTranslation,
+#pragma warning disable CS8604 // Possible null reference argument, false positive
 				new Stick(leftSticktop.RenderTransform as TranslateTransform, leftSticktopPressed.RenderTransform as TranslateTransform),
 				new Stick(rightSticktop.RenderTransform as TranslateTransform, rightSticktopPressed.RenderTransform as TranslateTransform),
 				leftTrigger.Clip as RectangleGeometry, rightTrigger.Clip as RectangleGeometry
+#pragma warning restore CS8604 // Possible null reference argument.
 			);
 
 		}
@@ -80,7 +82,7 @@ namespace Tiny_Controller_Display {
 				LocationChanged -= Window_LocationChanged;
 			}
 		}
-		private void Window_LocationChanged(object sender, EventArgs e) {
+		private void Window_LocationChanged(object? sender, EventArgs e) {
 			if(doMoveDisplaysTogether) {
 				foreach(var displayAndDelta in displayToPositionDelta) {
 					displayAndDelta.Key.Left = displayAndDelta.Value.X + Left;
@@ -130,12 +132,16 @@ namespace Tiny_Controller_Display {
 			SyncTogglesOnAllDisplays();
 		}
 
-		private void controllerTypeChanger_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-			Resources["artFolder"] = ((sender as ListBox).SelectedItem as ListBoxItem).Tag;
+		private void ControllerTypeChanger_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+#pragma warning disable CS8602 // Dereference of a possibly null reference on sender, false positive
+			Resources["artFolder"] = ((sender as ListBox).SelectedItem as ListBoxItem)?.Tag;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 		}
 
 		private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+#pragma warning disable CS8602 // Dereference of a possibly null reference, false positive
 			int scale = (int)(sender as ComboBox).SelectedItem;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 			(Width, Height) = (BaseWidth * scale, BaseHeight * scale);
 		}
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tiny_Controller_Display {
 	class ControllerType : INotifyPropertyChanged {
-		public event PropertyChangedEventHandler PropertyChanged;
+		public event PropertyChangedEventHandler? PropertyChanged;
 		public enum Types {
 			XB1Elite, DS4Rev2, Dualsense
 		};
@@ -17,7 +17,8 @@ namespace Tiny_Controller_Display {
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 		private Types _type = Types.XB1Elite;
-		public Types Type { get => _type;
+		public Types Type {
+			get => _type;
 			set {
 				_type = value;
 				NotifyPropertyChanged();
