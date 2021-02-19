@@ -20,6 +20,9 @@
   <PropertyGroup>
     <ApplicationIcon>tcd.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
+    <Version>2.1.1</Version>
+    <Authors>GCHS</Authors>
+    <Company>The House of Self Improvement</Company>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="xb1_elite\bottom_button.png" />
